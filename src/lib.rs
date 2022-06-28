@@ -434,9 +434,9 @@ pub fn update_raycast<T: 'static>(
         if let Some(ray) = pick_source.ray {
             pick_source.intersections.clear();
             // Create spans for tracing
-            let ray_cull = info_span!("ray culling");
-            let raycast = info_span!("raycast");
-            let ray_cull_guard = ray_cull.enter();
+            // let ray_cull = info_span!("ray culling");
+            // let raycast = info_span!("raycast");
+            // let ray_cull_guard = ray_cull.enter();
             // Check all entities to see if the source ray intersects the AABB, use this
             // to build a short list of entities that are in the path of the ray.
             let culled_list: Vec<Entity> = culling_query
@@ -471,7 +471,7 @@ pub fn update_raycast<T: 'static>(
                     },
                 )
                 .collect();
-            drop(ray_cull_guard);
+            // drop(ray_cull_guard);
 
             let picks = Arc::new(Mutex::new(BTreeMap::new()));
 
@@ -484,7 +484,7 @@ pub fn update_raycast<T: 'static>(
                     Entity,
                 )| {
                     if culled_list.contains(&entity) {
-                        let _raycast_guard = raycast.enter();
+                        // let _raycast_guard = raycast.enter();
                         // Use the mesh handle to get a reference to a mesh asset
                         if let Some(mesh) =
                             meshes.get(simplified_mesh.map(|bm| &bm.mesh).unwrap_or(mesh_handle))

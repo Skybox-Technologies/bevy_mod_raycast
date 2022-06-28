@@ -11,10 +11,14 @@ categories = ["game-engines", "rendering"]
 resolver = "2"
 
 [dependencies]
-bevy = { path = "../bevy", default-features = false, features = [ "render" ]}
+bevy = { path = "../bevy", default-features = false, features = ["render"] }
+log = "0.4"
 
 [dev-dependencies]
-bevy = { path = "../bevy", default-features = false, features = [ "bevy_winit", "x11" ]}
+bevy = { path = "../bevy", default-features = false, features = [
+    "bevy_winit",
+    "x11",
+] }
 criterion = "0.3"
 
 [[bench]]
